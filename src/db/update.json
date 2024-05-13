@@ -1,0 +1,40 @@
+{
+  "Engine": {
+    "Intake": 0,
+    "Throttle Body": 0,
+    "Fuel System": 0,
+    "Ignition": 0,
+    "Exaust": 0,
+    "Camshaft": 0,
+    "Valves": 0,
+    "Displacement": 0,
+    "Pistons": 0,
+    "Oil": 0,
+    "Flywheel": 0
+  },
+  "Plataform and Handling": {
+    "Brakes": 0,
+    "Spring and dampers": 0,
+    "Font Anti-Roll Bars": 0,
+    "Chassis Reinforcement": 0,
+    "Weight reduction": 0
+  },
+  "Drivetrain": {
+    "Clutch": 0,
+    "Transmission": 0,
+    "Driveline": 0,
+    "Differential": 0
+  },
+  "Tires and Rims": {
+    "Tire Compound": 0,
+    "Front Tire Width": 0,
+    "Rear Tire Width": 0,
+    "Rim Style": 0
+  },
+  "Aero and  Appearance": {
+    "Front Bumper": 0,
+    "Rear Wing": 0,
+    "Rear Bumper": 0
+  },
+  "Conversion": 0
+}

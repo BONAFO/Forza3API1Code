@@ -1,0 +1,64 @@
+@import url("../../../../less/WH.less");
+
+.title {
+  font-size: 4.5vh;
+}
+
+.coins {
+  width: 12%;
+}
+#prog-cont {
+  height: 4vh;
+  width: 100%;
+  margin: 12% 0% 4% 0%;
+}
+
+.progress {
+    height: 100%;
+    position: relative;
+}
+
+#progress-empty {
+  .progress;
+  background-color: #ebfeff9d;
+  border-radius: 0px 0px 100px 0px;
+}
+#progress-fill {
+  .progress;
+  top: -100%;
+  width: 0%;
+  transition: width .8s;
+}
+
+.label-prog{
+    font-size: 2.5vh;
+    position: absolute;
+    z-index: 10000000;
+    color: #000000;
+}
+
+.coin-label{
+    font-size: 3vh;
+    color: #ffffff;
+    position: relative;
+    top: 5px;
+}
+
+.btn{
+  font-size: 3vh;
+  padding: 2% 15%;
+  border-radius: 5%;
+  margin: 0% 3%;
+  background-color: transparent;
+}
+.btn-add{
+  .btn;
+  border: 5px solid #91ff62;
+  color: #91ff62;
+}
+.btn-dec{
+  .btn;
+  border: 5px solid #ff453e;
+  color: #ff453e;
+
+}

@@ -8,16 +8,15 @@ import marcas2 from "@/db/marcas.json";
 
 import { ref } from "vue";
 import { FilterMatchMode, FilterOperator } from "primevue/api";
+import {BASE_URL ,redirect} from "@/router/index"
+
+
 let marcas = [marcas2[0]]
-const customers = ref();
+
 const selectedCustomer = ref();
 const filters = ref({
   global: { value: null, matchMode: FilterMatchMode.CONTAINS },
   name: {
-    operator: FilterOperator.AND,
-    constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }],
-  },
-  "country.name": {
     operator: FilterOperator.AND,
     constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }],
   },
@@ -27,6 +26,10 @@ const filters = ref({
     constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }],
   },
 });
+
+const select_marca =(marca)=>{
+  redirect(marca);
+}
 </script>
 
 <template>
@@ -55,10 +58,10 @@ const filters = ref({
     <Column class="table-color" field="marca" header="Marca"></Column>
     <Column class="table-color" field="" header="send">
       <template #body="{ data }">
-        <button class="button-table btn btn-primary">
-
-          <a :href="`${data.marca }/cars`">SELECT</a>
-        </button>
+        <!-- <button :click="select_marca" class="button-table btn btn-primary">
+          SELECT
+        </button> -->
+      <button @click="select_marca(data.marca)" class="button-table btn btn-primary">SELECT</button>
       </template>
     </Column>
   </DataTable>
