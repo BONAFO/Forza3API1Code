@@ -94,7 +94,7 @@ const buy_upgrade = (update) => {
       if (cost <= car_coins) {
         if (confirm("Are you sure you want to buy this upgrade?")) {
           save.cars[car_index].coins -= cost;
-          save.cars[car_index].updates[updates_car].lv++;
+          save.cars[car_index].updates[updates_car].lv++; 
           // save.cars[car_index].updates.push({
           //   id,
           //   sub_id,

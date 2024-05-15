@@ -10,9 +10,7 @@ export const level_calculation = (level) => {
 };
 
 
-for (let i = 0; i < 5; i++) {
-  console.log(level_calculation(i));
-}
+
 
 const level_up = (exp, level) => {
   let breaker = level;

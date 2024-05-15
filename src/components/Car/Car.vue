@@ -24,6 +24,10 @@ if (localStorage.getItem(Store.get("API_NAME")) == null) {
   Store.save("save", unzip_token());
 }
 
+
+
+
+
 const save = Store.get("save");
 
 if (save.cars.filter((c) => c.id == car.id)[0] == undefined) {

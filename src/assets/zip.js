@@ -4,6 +4,9 @@ import Store from "@/assets/store.manager";
 const table = [
   ["coins", "@a@"],
   ["cars", "@b@"],
+  ["updates", "@c@"],
+  ["sub_id", "@d@"],
+  ["level", "@e@"],
 ];
 
 function calculate_Bytes(cadena) {
@@ -12,6 +15,7 @@ function calculate_Bytes(cadena) {
 }
 
 export function create_token(data) {
+  console.log(JSON.stringify(data));
   data = replaceData(data);
   let token = LZString.compressToUTF16(data);
   localStorage.setItem(Store.get("API_NAME"), token);

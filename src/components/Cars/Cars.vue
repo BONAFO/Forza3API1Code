@@ -57,14 +57,11 @@ const select_car =(car)=>{
 
 
 
-
-if (!localStorage.getItem(Store.get("API_NAME"))) {
+if (localStorage.getItem(Store.get("API_NAME")) == null) {
   create_token(Store.get("save"));
 } else {
-  Store.save("save", unzip_token())
-
+  Store.save("save", unzip_token());
 }
-
 
 
 </script>

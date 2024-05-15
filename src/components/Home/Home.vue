@@ -4,7 +4,7 @@ import Column from "primevue/column";
 import InputIcon from "primevue/inputicon";
 import IconField from "primevue/iconfield";
 import InputText from "primevue/inputtext";
-import marcas2 from "@/db/marcas.json";
+import marcas from "@/db/marcas.json";
 
 import { ref } from "vue";
 import { FilterMatchMode, FilterOperator } from "primevue/api";
@@ -13,7 +13,6 @@ import { create_token , unzip_token} from "@/assets/zip";
 
 import Store from "@/assets/store.manager";
 
-let marcas = [marcas2[0]];
 
 const selectedCustomer = ref();
 const filters = ref({
@@ -34,13 +33,11 @@ const select_marca = (marca) => {
 };
 
 
-if (!localStorage.getItem(Store.get("API_NAME"))) {
+if (localStorage.getItem(Store.get("API_NAME")) == null) {
   create_token(Store.get("save"));
 } else {
-  Store.save("save", unzip_token())
-
+  Store.save("save", unzip_token());
 }
-
 
 
 
