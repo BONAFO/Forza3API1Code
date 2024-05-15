@@ -8,10 +8,12 @@ import marcas2 from "@/db/marcas.json";
 
 import { ref } from "vue";
 import { FilterMatchMode, FilterOperator } from "primevue/api";
-import {BASE_URL ,redirect} from "@/router/index"
+import { redirect } from "@/router/index";
+import { create_token , unzip_token} from "@/assets/zip";
 
+import Store from "@/assets/store.manager";
 
-let marcas = [marcas2[0]]
+let marcas = [marcas2[0]];
 
 const selectedCustomer = ref();
 const filters = ref({
@@ -27,46 +29,65 @@ const filters = ref({
   },
 });
 
-const select_marca =(marca)=>{
+const select_marca = (marca) => {
   redirect(marca);
+};
+
+
+if (!localStorage.getItem(Store.get("API_NAME"))) {
+  create_token(Store.get("save"));
+} else {
+  Store.save("save", unzip_token())
+
 }
+
+
+
+
 </script>
 
 <template>
-  <DataTable
-    v-model:filters="filters"
-    v-model:selection="selectedCustomer"
-    :value="marcas"
-    stateStorage="session"
-    stateKey="dt-state-demo-session"
-    paginator
-    :rows="5"
-    filterDisplay="menu"
-    selectionMode="single"
-    dataKey="id"
-    :globalFilterFields="['marca']"
-    tableStyle="min-width: 100%"
-  >
-    <template #header>
-      <IconField iconPosition="left">
-        <InputIcon>
-          <i class="pi pi-search" />
-        </InputIcon>
-        <InputText v-model="filters['global'].value" placeholder="..." />
-      </IconField>
-    </template>
-    <Column class="table-color" field="marca" header="Marca"></Column>
-    <Column class="table-color" field="" header="send">
-      <template #body="{ data }">
-        <!-- <button :click="select_marca" class="button-table btn btn-primary">
+  <div style="width: 100%">
+    <DataTable
+      v-model:filters="filters"
+      v-model:selection="selectedCustomer"
+      :value="marcas"
+      stateStorage="session"
+      stateKey="dt-state-demo-session"
+      paginator
+      :rows="5"
+      filterDisplay="menu"
+      selectionMode="single"
+      dataKey="id"
+      :globalFilterFields="['marca']"
+    >
+      <template #header>
+        <IconField iconPosition="left">
+          <InputIcon>
+            <i class="pi pi-search" />
+          </InputIcon>
+          <InputText v-model="filters['global'].value" placeholder="..." />
+        </IconField>
+      </template>
+      <Column class="table-color" field="marca" header="Marca"></Column>
+      <Column class="table-color" field="" header="">
+        <template #body="{ data }">
+          <!-- <button :click="select_marca" class="button-table btn btn-primary">
           SELECT
         </button> -->
-      <button @click="select_marca(data.marca)" class="button-table btn btn-primary">SELECT</button>
-      </template>
-    </Column>
-  </DataTable>
+          <button
+            @click="select_marca(data.marca)"
+            class="button-table btn btn-primary"
+          >
+            SELECT
+          </button>
+        </template>
+      </Column>
+    </DataTable>
+  </div>
 </template>
 
 <style lang="less">
 @import "./less/style.less";
+@import "@/less/basic.fonts.less";
 </style>

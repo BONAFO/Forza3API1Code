@@ -1,43 +1,38 @@
 import store from "@/plugins/vuex";
 
-// const Store = store;
-
 class Store_Class {
   constructor(store) {
     this.store = store;
   }
 
-  pack(id) {
+  get(id) {
     const capitalized = id[0].toUpperCase() + id.slice(1, id.length);
+    return this.store.getters["get" + capitalized];
+  }
+  save(id, value) {
+    const capitalized = id[0].toUpperCase() + id.slice(1, id.length);
+    this.store.commit("set" + capitalized, value);
+  }
+  dipatch(id, value) {
+    const capitalized = id[0].toUpperCase() + id.slice(1, id.length);
+    this.store.dispatch("disp" + capitalized, value);
+  }
+
+  pack(id) {
     return {
       get: () => {
-        return this.store.getters["get" + capitalized];
+        return this.get(id);
       },
       save: (value) => {
-        this.store.commit("set" + capitalized, value);
+        return this.save(id,value);
       },
       dipatch: (value) => {
-        this.store.dispatch("disp" + capitalized, value);
+        return this.dipatch(id,value);
       },
     };
   }
 }
 
-
-// getTest(state) {
-//     //   return state.test;
-//     // },
-
 const Store = new Store_Class(store);
-
-
-
-// const test_pack = Store.pack("test");
-// console.log(test_pack.get());
-// test_pack.save('Gato');
-// console.log(test_pack.get());
-
-// const test_pack = Store.pack("gato");
-
 
 export default Store;

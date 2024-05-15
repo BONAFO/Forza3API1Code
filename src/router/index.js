@@ -8,6 +8,7 @@ const routes = [
   { path: "/", component: () => import("@/components/Home/Home.vue") },
   { path: '/:marca', component: ()=> import('@/components/Cars/Cars.vue')},  
   { path: '/:marca/:car', component: ()=> import('@/components/Car/Car.vue')},  
+  { path: "/cl", component: () => import("@/components/Clear/Clear.vue") },
 
 ];
 
@@ -26,6 +27,7 @@ router = createRouter({
 
 export const redirect =(uri="")=>{
   window.location.href = window.origin + BASE_URL + uri;
+  window.location.reload()
 }
 // if (process.env.NODE_ENV === "development") {
 //   router = createRouter({

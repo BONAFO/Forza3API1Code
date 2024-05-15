@@ -1,20 +1,26 @@
-
 import LZString from "lz-string";
+import Store from "@/assets/store.manager";
+
+const table = [
+  ["coins", "@a@"],
+  ["cars", "@b@"],
+];
 
 function calculate_Bytes(cadena) {
   const buffer = new TextEncoder().encode(cadena);
   return buffer.byteLength;
 }
 
-export function create_token(token) {
-  token = JSON.stringify(token);
-  token = LZString.compressToUTF16(token);
-  localStorage.setItem("F3-1", token);
+export function create_token(data) {
+  data = replaceData(data);
+  let token = LZString.compressToUTF16(data);
+  localStorage.setItem(Store.get("API_NAME"), token);
 }
 
 export function unzip_token() {
-  let token = localStorage.getItem("F3-1");
+  let token = localStorage.getItem(Store.get("API_NAME"));
   token = LZString.decompressFromUTF16(token);
+  token = revertData(token);
   return JSON.parse(token);
 }
 
@@ -40,3 +46,18 @@ export const calculate_aval_store = () => {
   return { used, max: max - used };
 };
 
+export const replaceData = (data) => {
+  data = JSON.stringify(data);
+  table.map((en) => {
+    data = data.replaceAll(en[0], en[1]);
+  });
+  return data;
+};
+
+export const revertData = (data) => {
+  table.map((en) => {
+    data = data.replaceAll(en[1], en[0]);
+  });
+
+  return data;
+};

@@ -12,12 +12,15 @@ import InputIcon from "primevue/inputicon";
 import IconField from "primevue/iconfield";
 import InputText from "primevue/inputtext";
 import cars from "@/db/cars.json";
-import {BASE_URL} from "@/router/index"
 
 
 
 import { ref } from "vue";
 import { FilterMatchMode, FilterOperator } from "primevue/api";
+import { create_token , unzip_token  } from "@/assets/zip";
+import Store from "@/assets/store.manager";
+
+
 
 const selectedCustomer = ref();
 const filters = ref({
@@ -48,28 +51,50 @@ const cars_arr = cars.filter(c => c.marca.trim() == marca.trim() );
 
 const select_car =(car)=>{
     redirect(marca +"/" + car)
-    // console.log(window.origin + BASE_URL + marca +"/" + car);
-    // window.location.href = window.origin + BASE_URL + marca +"/" + car;
 }
+
+
+
+
+
+
+if (!localStorage.getItem(Store.get("API_NAME"))) {
+  create_token(Store.get("save"));
+} else {
+  Store.save("save", unzip_token())
+
+}
+
+
+
 </script>
 
 
 
 <template>
     <div>
-      <button
-        @click="
-          redirect()
-        "
+      <button class="back-btn btn" @click="redirect()">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="30"
+        height="30"
+        fill="currentColor"
+        class="bi bi-arrow-left"
+        viewBox="0 0 16 16"
       >
-        BACK
-      </button>
+        <path
+          fill-rule="evenodd"
+          d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"
+        />
+      </svg>
+    </button>
     </div>
    
 
 
 
-
+    <div style="width: 100% !important;">
+      
   <DataTable
     v-model:filters="filters"
     v-model:selection="selectedCustomer"
@@ -82,15 +107,17 @@ const select_car =(car)=>{
     selectionMode="single"
     dataKey="id"
     :globalFilterFields="['name']"
-    tableStyle="min-width: 100%"
+    
   >
     <template #header>
-      <IconField iconPosition="left">
+
+        <IconField iconPosition="left">
         <InputIcon>
           <i class="pi pi-search" />
         </InputIcon>
-        <InputText v-model="filters['global'].value" placeholder="..." />
+        <InputText style="width: 100%;" v-model="filters['global'].value" placeholder="..." />
       </IconField>
+
     </template>
     <Column class="table-color" field="name" header="Name"></Column>
     <Column class="table-color" field="" header="Select">
@@ -102,8 +129,10 @@ const select_car =(car)=>{
       </template>
     </Column>
   </DataTable>
+    </div>
 </template>
 
 <style lang="less">
 @import "../Home/less/style.less";
+@import "@/less/basic.fonts.less";
 </style>

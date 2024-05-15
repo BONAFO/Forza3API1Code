@@ -1,40 +1,44 @@
 {
   "Engine": {
-    "Intake": 0,
-    "Throttle Body": 0,
-    "Fuel System": 0,
-    "Ignition": 0,
-    "Exaust": 0,
-    "Camshaft": 0,
-    "Valves": 0,
-    "Displacement": 0,
-    "Pistons": 0,
-    "Oil": 0,
-    "Flywheel": 0
+    "id": 0,
+    "Throttle Body": { "id": 1, "lv": 4, "cost": [25,50,75,100] },
+    "Fuel System": { "id": 2, "lv": 4, "cost": [25,50,75,100] },
+    "Ignition": { "id": 3, "lv": 4, "cost": [] },
+    "Exaust": { "id": 4, "lv": 4, "cost": [] },
+    "Camshaft": { "id": 5, "lv": 4, "cost": [] },
+    "Valves": { "id": 6, "lv": 4, "cost": [] },
+    "Displacement": { "id": 7, "lv": 4, "cost": [] },
+    "Pistons": { "id": 8, "lv": 4, "cost": [] },
+    "Oil": { "id": 9, "lv": 4, "cost": [] },
+    "Flywheel": { "id": 10, "lv": 4, "cost": [] }
   },
   "Plataform and Handling": {
-    "Brakes": 0,
-    "Spring and dampers": 0,
-    "Font Anti-Roll Bars": 0,
-    "Chassis Reinforcement": 0,
-    "Weight reduction": 0
+    "id": 1,
+    "Brakes": { "id": 0, "lv": 4, "cost": [] },
+    "Spring and dampers": { "id": 1, "lv": 4, "cost": [] },
+    "Font Anti-Roll Bars": { "id": 2, "lv": 4, "cost": [] },
+    "Chassis Reinforcement": { "id": 3, "lv": 4, "cost": [] },
+    "Weight reduction": { "id": 4, "lv": 4, "cost": [] }
   },
   "Drivetrain": {
-    "Clutch": 0,
-    "Transmission": 0,
-    "Driveline": 0,
-    "Differential": 0
+    "id": 2,
+    "Clutch": { "id": 0, "lv": 4, "cost": [] },
+    "Transmission": { "id": 1, "lv": 4, "cost": [] },
+    "Driveline": { "id": 2, "lv": 4, "cost": [] },
+    "Differential": { "id": 3, "lv": 4, "cost": [] }
   },
   "Tires and Rims": {
-    "Tire Compound": 0,
-    "Front Tire Width": 0,
-    "Rear Tire Width": 0,
-    "Rim Style": 0
+    "id": 3,
+    "Tire Compound": { "id": 0, "lv": 4, "cost": [] },
+    "Front Tire Width": { "id": 1, "lv": 4, "cost": [] },
+    "Rear Tire Width": { "id": 2, "lv": 4, "cost": [] },
+    "Rim Style": { "id": 3, "lv": 4, "cost": [] }
   },
   "Aero and  Appearance": {
-    "Front Bumper": 0,
-    "Rear Wing": 0,
-    "Rear Bumper": 0
+    "id": 4,
+    "Front Bumper": { "id": 0, "lv": 4, "cost": [] },
+    "Rear Wing": { "id": 1, "lv": 4, "cost": [] },
+    "Rear Bumper": { "id": 2, "lv": 4, "cost": [] }
   },
-  "Conversion": 0
+  "Conversion": 2
 }
